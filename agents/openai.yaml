@@ -1,0 +1,6 @@
+interface:
+  display_name: "設計檔交付健檢"
+  short_description: "唯讀檢查多格式設計交付包，區分缺素材、引用風險和未驗證項目"
+  default_prompt: "使用 $design-delivery-checker 唯讀檢查這個交付資料夾；找缺素材及引用風險，不能驗的請列出。"
+policy:
+  allow_implicit_invocation: true

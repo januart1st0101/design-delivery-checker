@@ -1,0 +1,320 @@
+{
+  "report_version": "0.1.0",
+  "created_at": "2026-11-01T05:05:37+00:00",
+  "scope": {
+    "input": "unity-issues",
+    "kind": "directory",
+    "paths": "relative-to-input-root",
+    "limits": {
+      "max_file_bytes": 16777216,
+      "max_total_bytes": 67108864,
+      "max_files": 2000
+    },
+    "read_only": true
+  },
+  "overview": {
+    "counts": {
+      "ERROR": 5,
+      "WARNING": 1,
+      "INFO": 3,
+      "NOT_CHECKED": 5
+    },
+    "conclusion": "發現需處理或未驗證項目"
+  },
+  "files": [
+    {
+      "file": "Assets/Duplicate.mat",
+      "format": "Unity text",
+      "coverage": "GUID／fileID靜態引用子集",
+      "statistics": {
+        "anchors": 1,
+        "references": 0
+      }
+    },
+    {
+      "file": "Assets/Duplicate.mat.meta",
+      "format": "Unity meta",
+      "coverage": "GUID 索引，非匯入驗證",
+      "statistics": {}
+    },
+    {
+      "file": "Assets/Mat.mat",
+      "format": "Unity text",
+      "coverage": "GUID／fileID靜態引用子集",
+      "statistics": {
+        "anchors": 1,
+        "references": 1
+      }
+    },
+    {
+      "file": "Assets/Mat.mat.meta",
+      "format": "Unity meta",
+      "coverage": "GUID 索引，非匯入驗證",
+      "statistics": {}
+    },
+    {
+      "file": "Assets/NoMeta.txt",
+      "format": "resource",
+      "coverage": "未檢查（輔助資源／未支援格式）",
+      "statistics": {}
+    },
+    {
+      "file": "Assets/Scene.unity",
+      "format": "Unity text",
+      "coverage": "GUID／fileID靜態引用子集",
+      "statistics": {
+        "anchors": 1,
+        "references": 6
+      }
+    },
+    {
+      "file": "Assets/Scene.unity.meta",
+      "format": "Unity meta",
+      "coverage": "GUID 索引，非匯入驗證",
+      "statistics": {}
+    },
+    {
+      "file": "Packages/manifest.json",
+      "format": "JSON resource",
+      "coverage": "僅 Unity package manifest 在專案檢查時讀取",
+      "statistics": {}
+    },
+    {
+      "file": "ProjectSettings/GraphicsSettings.asset",
+      "format": "Unity text",
+      "coverage": "GUID／fileID靜態引用子集",
+      "statistics": {
+        "anchors": 1,
+        "references": 1
+      }
+    },
+    {
+      "file": "ProjectSettings/ProjectVersion.txt",
+      "format": "resource",
+      "coverage": "未檢查（輔助資源／未支援格式）",
+      "statistics": {}
+    }
+  ],
+  "issues": [
+    {
+      "severity": "ERROR",
+      "rule_id": "UNITY_DUP_GUID",
+      "file": "Assets/Duplicate.mat",
+      "reference": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "evidence": "相同GUID對應：Assets/Duplicate.mat, Assets/Mat.mat",
+      "impact": "Unity可能辨識成錯誤資產",
+      "suggestion": "人工確認正確meta來源；不可自動重建"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "UNITY_DUP_GUID",
+      "file": "Assets/Mat.mat",
+      "reference": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "evidence": "相同GUID對應：Assets/Duplicate.mat, Assets/Mat.mat",
+      "impact": "Unity可能辨識成錯誤資產",
+      "suggestion": "人工確認正確meta來源；不可自動重建"
+    },
+    {
+      "severity": "INFO",
+      "rule_id": "UNITY_PROJECT",
+      "file": ".",
+      "reference": "",
+      "evidence": "識別 Assets / Packages / ProjectSettings",
+      "impact": "以文字序列化子集檢查",
+      "suggestion": "保留meta與Packages資訊"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "UNITY_META_MISSING",
+      "file": "Assets/NoMeta.txt",
+      "reference": "",
+      "evidence": "Assets內檔案未附meta",
+      "impact": "GUID可能在重匯入時改變",
+      "suggestion": "補回原始meta；不要自動產生"
+    },
+    {
+      "severity": "NOT_CHECKED",
+      "rule_id": "UNITY_PIPELINE_COMPATIBILITY",
+      "file": "ProjectSettings/GraphicsSettings.asset",
+      "reference": "",
+      "evidence": "僅有靜態設定；不推斷shader與渲染管線相容性",
+      "impact": "無法保證材質呈現正常",
+      "suggestion": "在原Unity版本檢查Graphics/Quality與實際渲染"
+    },
+    {
+      "severity": "NOT_CHECKED",
+      "rule_id": "UNITY_STATIC_SCOPE",
+      "file": "Assets/Duplicate.mat",
+      "reference": "",
+      "evidence": "只解析Unity YAML flow引用與anchor；不執行腳本、不匯入、不驗證畫面或完整YAML語意",
+      "impact": "非Unity開啟成功保證；空/null引用可能合法",
+      "suggestion": "經同意另在原軟體確認"
+    },
+    {
+      "severity": "INFO",
+      "rule_id": "UNITY_BUILTIN",
+      "file": "Assets/Mat.mat",
+      "reference": "0000000000000000f000000000000000",
+      "evidence": "文字引用 m_Shader；fileID=46；Unity內建資源",
+      "impact": "不依賴包內meta",
+      "suggestion": "於實際Unity版本確認"
+    },
+    {
+      "severity": "NOT_CHECKED",
+      "rule_id": "UNITY_STATIC_SCOPE",
+      "file": "Assets/Mat.mat",
+      "reference": "",
+      "evidence": "只解析Unity YAML flow引用與anchor；不執行腳本、不匯入、不驗證畫面或完整YAML語意",
+      "impact": "非Unity開啟成功保證；空/null引用可能合法",
+      "suggestion": "經同意另在原軟體確認"
+    },
+    {
+      "severity": "INFO",
+      "rule_id": "UNITY_BUILTIN",
+      "file": "Assets/Scene.unity",
+      "reference": "0000000000000000f000000000000000",
+      "evidence": "文字引用 m_Builtin；fileID=10303；Unity內建資源",
+      "impact": "不依賴包內meta",
+      "suggestion": "於實際Unity版本確認"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "UNITY_MATERIAL_GUID_MISSING",
+      "file": "Assets/Scene.unity",
+      "reference": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "evidence": "文字引用 m_Material；fileID=2100000；已掃描meta無對應",
+      "impact": "缺資產候選（非實機結論）",
+      "suggestion": "補回原始資產/meta或提供Package資料"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "UNITY_SHADER_GUID_MISSING",
+      "file": "Assets/Scene.unity",
+      "reference": "cccccccccccccccccccccccccccccccc",
+      "evidence": "文字引用 m_Shader；fileID=4800000；已掃描meta無對應",
+      "impact": "缺資產候選（非實機結論）",
+      "suggestion": "補回原始資產/meta或提供Package資料"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "UNITY_TEXTURE_GUID_MISSING",
+      "file": "Assets/Scene.unity",
+      "reference": "dddddddddddddddddddddddddddddddd",
+      "evidence": "文字引用 m_Texture；fileID=2800000；已掃描meta無對應",
+      "impact": "缺資產候選（非實機結論）",
+      "suggestion": "補回原始資產/meta或提供Package資料"
+    },
+    {
+      "severity": "NOT_CHECKED",
+      "rule_id": "UNITY_STATIC_SCOPE",
+      "file": "Assets/Scene.unity",
+      "reference": "",
+      "evidence": "只解析Unity YAML flow引用與anchor；不執行腳本、不匯入、不驗證畫面或完整YAML語意",
+      "impact": "非Unity開啟成功保證；空/null引用可能合法",
+      "suggestion": "經同意另在原軟體確認"
+    },
+    {
+      "severity": "NOT_CHECKED",
+      "rule_id": "UNITY_STATIC_SCOPE",
+      "file": "ProjectSettings/GraphicsSettings.asset",
+      "reference": "",
+      "evidence": "只解析Unity YAML flow引用與anchor；不執行腳本、不匯入、不驗證畫面或完整YAML語意",
+      "impact": "非Unity開啟成功保證；空/null引用可能合法",
+      "suggestion": "經同意另在原軟體確認"
+    }
+  ],
+  "not_checked": [
+    {
+      "severity": "NOT_CHECKED",
+      "rule_id": "UNITY_PIPELINE_COMPATIBILITY",
+      "file": "ProjectSettings/GraphicsSettings.asset",
+      "reference": "",
+      "evidence": "僅有靜態設定；不推斷shader與渲染管線相容性",
+      "impact": "無法保證材質呈現正常",
+      "suggestion": "在原Unity版本檢查Graphics/Quality與實際渲染"
+    },
+    {
+      "severity": "NOT_CHECKED",
+      "rule_id": "UNITY_STATIC_SCOPE",
+      "file": "Assets/Duplicate.mat",
+      "reference": "",
+      "evidence": "只解析Unity YAML flow引用與anchor；不執行腳本、不匯入、不驗證畫面或完整YAML語意",
+      "impact": "非Unity開啟成功保證；空/null引用可能合法",
+      "suggestion": "經同意另在原軟體確認"
+    },
+    {
+      "severity": "NOT_CHECKED",
+      "rule_id": "UNITY_STATIC_SCOPE",
+      "file": "Assets/Mat.mat",
+      "reference": "",
+      "evidence": "只解析Unity YAML flow引用與anchor；不執行腳本、不匯入、不驗證畫面或完整YAML語意",
+      "impact": "非Unity開啟成功保證；空/null引用可能合法",
+      "suggestion": "經同意另在原軟體確認"
+    },
+    {
+      "severity": "NOT_CHECKED",
+      "rule_id": "UNITY_STATIC_SCOPE",
+      "file": "Assets/Scene.unity",
+      "reference": "",
+      "evidence": "只解析Unity YAML flow引用與anchor；不執行腳本、不匯入、不驗證畫面或完整YAML語意",
+      "impact": "非Unity開啟成功保證；空/null引用可能合法",
+      "suggestion": "經同意另在原軟體確認"
+    },
+    {
+      "severity": "NOT_CHECKED",
+      "rule_id": "UNITY_STATIC_SCOPE",
+      "file": "ProjectSettings/GraphicsSettings.asset",
+      "reference": "",
+      "evidence": "只解析Unity YAML flow引用與anchor；不執行腳本、不匯入、不驗證畫面或完整YAML語意",
+      "impact": "非Unity開啟成功保證；空/null引用可能合法",
+      "suggestion": "經同意另在原軟體確認"
+    }
+  ],
+  "recommendations": [
+    "依 ERROR／WARNING 逐項確認，NOT_CHECKED 需另行驗證。",
+    "同名素材僅候選，不自動重新連結。",
+    "字型可用性與授權須由交付雙方確認；本機缺字型不等於收件方缺字型。"
+  ],
+  "integrity": [
+    {
+      "file": "Assets/Duplicate.mat.meta",
+      "sha256_before": "f278c4133cb8e0a7e4c69840a22bfbfc589b2161705ae8b69fbf4a3290ed3408",
+      "unchanged": true
+    },
+    {
+      "file": "Assets/Mat.mat.meta",
+      "sha256_before": "f278c4133cb8e0a7e4c69840a22bfbfc589b2161705ae8b69fbf4a3290ed3408",
+      "unchanged": true
+    },
+    {
+      "file": "Assets/Scene.unity.meta",
+      "sha256_before": "2d51112d0d08a6be7fb890187a3595479786cc243845fa29f89c6ff963792feb",
+      "unchanged": true
+    },
+    {
+      "file": "Packages/manifest.json",
+      "sha256_before": "bfb102fee15ab8af3941378dc8715f9f5289c3f3d51eb6b6ae8f1f2f4f0e7115",
+      "unchanged": true
+    },
+    {
+      "file": "Assets/Duplicate.mat",
+      "sha256_before": "3c54de289f87fc89591421d693fd290144a44b8d10ad8171da539b5ba5aa1768",
+      "unchanged": true
+    },
+    {
+      "file": "Assets/Mat.mat",
+      "sha256_before": "4108af71b0248cfa6d74e5618da29828a72fdee9b2b8d289530130c2bc4dfc9d",
+      "unchanged": true
+    },
+    {
+      "file": "Assets/Scene.unity",
+      "sha256_before": "47dabf5c12c63239144046fb272f6b5c991ad7ac28de41e77f72865626a1cb13",
+      "unchanged": true
+    },
+    {
+      "file": "ProjectSettings/GraphicsSettings.asset",
+      "sha256_before": "719a2219ef2ef7feda28c167f51b35e3ba7b4cf40bbbfb29f574c36c2ce576fb",
+      "unchanged": true
+    }
+  ]
+}

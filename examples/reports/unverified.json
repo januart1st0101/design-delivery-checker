@@ -1,0 +1,141 @@
+{
+  "report_version": "0.1.0",
+  "created_at": "2026-11-01T05:05:40+00:00",
+  "scope": {
+    "input": "unverified",
+    "kind": "directory",
+    "paths": "relative-to-input-root",
+    "limits": {
+      "max_file_bytes": 16777216,
+      "max_total_bytes": 67108864,
+      "max_files": 2000
+    },
+    "read_only": true
+  },
+  "overview": {
+    "counts": {
+      "ERROR": 0,
+      "WARNING": 0,
+      "INFO": 0,
+      "NOT_CHECKED": 4
+    },
+    "conclusion": "已執行範圍內未發現問題；未驗證項不代表通過"
+  },
+  "files": [
+    {
+      "file": "README.txt",
+      "format": "resource",
+      "coverage": "未檢查（輔助資源／未支援格式）",
+      "statistics": {}
+    },
+    {
+      "file": "自製色塊.psb",
+      "format": "PSD/PSB",
+      "coverage": "未支援原生驗證；僅檔頭分類",
+      "statistics": {
+        "classification": "8BPS header version=2，1×1，channels=3，depth=8；僅辨識檔頭"
+      }
+    },
+    {
+      "file": "自製色塊.psd",
+      "format": "PSD/PSB",
+      "coverage": "未支援原生驗證；僅檔頭分類",
+      "statistics": {
+        "classification": "8BPS header version=1，1×1，channels=3，depth=8；僅辨識檔頭"
+      }
+    }
+  ],
+  "issues": [
+    {
+      "severity": "NOT_CHECKED",
+      "rule_id": "NATIVE_PARSER_UNAVAILABLE",
+      "file": "自製色塊.psb",
+      "reference": "",
+      "evidence": "8BPS header version=2，1×1，channels=3，depth=8；僅辨識檔頭",
+      "impact": "外部／內嵌素材、材質／節點、單位及字型狀態均未驗證；不得因無外部檔而報遺失",
+      "suggestion": "依能力矩陣安排後續解析器；或經使用者同意在原軟體檢查"
+    },
+    {
+      "severity": "NOT_CHECKED",
+      "rule_id": "FONT_STATUS_UNKNOWN",
+      "file": "自製色塊.psb",
+      "reference": "",
+      "evidence": "字型嵌入／已轉外框／未嵌入／引用名稱均無法判斷",
+      "impact": "不能當作字型齊全或字型遺失",
+      "suggestion": "原軟體檢查字型與素材面板；不自動下載字型"
+    },
+    {
+      "severity": "NOT_CHECKED",
+      "rule_id": "NATIVE_PARSER_UNAVAILABLE",
+      "file": "自製色塊.psd",
+      "reference": "",
+      "evidence": "8BPS header version=1，1×1，channels=3，depth=8；僅辨識檔頭",
+      "impact": "外部／內嵌素材、材質／節點、單位及字型狀態均未驗證；不得因無外部檔而報遺失",
+      "suggestion": "依能力矩陣安排後續解析器；或經使用者同意在原軟體檢查"
+    },
+    {
+      "severity": "NOT_CHECKED",
+      "rule_id": "FONT_STATUS_UNKNOWN",
+      "file": "自製色塊.psd",
+      "reference": "",
+      "evidence": "字型嵌入／已轉外框／未嵌入／引用名稱均無法判斷",
+      "impact": "不能當作字型齊全或字型遺失",
+      "suggestion": "原軟體檢查字型與素材面板；不自動下載字型"
+    }
+  ],
+  "not_checked": [
+    {
+      "severity": "NOT_CHECKED",
+      "rule_id": "NATIVE_PARSER_UNAVAILABLE",
+      "file": "自製色塊.psb",
+      "reference": "",
+      "evidence": "8BPS header version=2，1×1，channels=3，depth=8；僅辨識檔頭",
+      "impact": "外部／內嵌素材、材質／節點、單位及字型狀態均未驗證；不得因無外部檔而報遺失",
+      "suggestion": "依能力矩陣安排後續解析器；或經使用者同意在原軟體檢查"
+    },
+    {
+      "severity": "NOT_CHECKED",
+      "rule_id": "FONT_STATUS_UNKNOWN",
+      "file": "自製色塊.psb",
+      "reference": "",
+      "evidence": "字型嵌入／已轉外框／未嵌入／引用名稱均無法判斷",
+      "impact": "不能當作字型齊全或字型遺失",
+      "suggestion": "原軟體檢查字型與素材面板；不自動下載字型"
+    },
+    {
+      "severity": "NOT_CHECKED",
+      "rule_id": "NATIVE_PARSER_UNAVAILABLE",
+      "file": "自製色塊.psd",
+      "reference": "",
+      "evidence": "8BPS header version=1，1×1，channels=3，depth=8；僅辨識檔頭",
+      "impact": "外部／內嵌素材、材質／節點、單位及字型狀態均未驗證；不得因無外部檔而報遺失",
+      "suggestion": "依能力矩陣安排後續解析器；或經使用者同意在原軟體檢查"
+    },
+    {
+      "severity": "NOT_CHECKED",
+      "rule_id": "FONT_STATUS_UNKNOWN",
+      "file": "自製色塊.psd",
+      "reference": "",
+      "evidence": "字型嵌入／已轉外框／未嵌入／引用名稱均無法判斷",
+      "impact": "不能當作字型齊全或字型遺失",
+      "suggestion": "原軟體檢查字型與素材面板；不自動下載字型"
+    }
+  ],
+  "recommendations": [
+    "依 ERROR／WARNING 逐項確認，NOT_CHECKED 需另行驗證。",
+    "同名素材僅候選，不自動重新連結。",
+    "字型可用性與授權須由交付雙方確認；本機缺字型不等於收件方缺字型。"
+  ],
+  "integrity": [
+    {
+      "file": "自製色塊.psb",
+      "sha256_before": "53c07ec8a7a2f84db088ae81d5a3fced1f31ce10fcd7364e1c6c8a9b1fc3386d",
+      "unchanged": true
+    },
+    {
+      "file": "自製色塊.psd",
+      "sha256_before": "a82eba62a23ff1e74ce2e094f2b92f235de0bb2cb0e56385087a29b1f62e3a88",
+      "unchanged": true
+    }
+  ]
+}

@@ -1,0 +1,266 @@
+{
+  "report_version": "0.1.0",
+  "created_at": "2026-11-01T05:05:27+00:00",
+  "scope": {
+    "input": "missing",
+    "kind": "directory",
+    "paths": "relative-to-input-root",
+    "limits": {
+      "max_file_bytes": 16777216,
+      "max_total_bytes": 67108864,
+      "max_files": 2000
+    },
+    "read_only": true
+  },
+  "overview": {
+    "counts": {
+      "ERROR": 4,
+      "WARNING": 0,
+      "INFO": 2,
+      "NOT_CHECKED": 5
+    },
+    "conclusion": "發現需處理或未驗證項目"
+  },
+  "files": [
+    {
+      "file": "model.obj",
+      "format": "OBJ",
+      "coverage": "頂點／face索引、MTL與map引用子集",
+      "statistics": {
+        "vertices": 3,
+        "uvs": 0,
+        "normals": 0,
+        "faces": 1,
+        "group_object_declarations": 2
+      }
+    },
+    {
+      "file": "sample.mtl",
+      "format": "MTL",
+      "coverage": "材質名／map引用子集",
+      "statistics": {
+        "materials": 1
+      }
+    },
+    {
+      "file": "triangle.bin",
+      "format": "resource",
+      "coverage": "未檢查（輔助資源／未支援格式）",
+      "statistics": {}
+    },
+    {
+      "file": "缺素材.glb",
+      "format": "GLB",
+      "coverage": "部分支援：核心結構／引用／未壓縮幾何",
+      "statistics": {
+        "declared_vertices": 3,
+        "decoded_positions": 3,
+        "primitives": 1,
+        "triangles_uncompressed": 1,
+        "nodes": 2,
+        "named_nodes": 2,
+        "repeated_name_groups": 0,
+        "root_nodes": 1,
+        "materials": 1,
+        "images": 1
+      }
+    },
+    {
+      "file": "缺素材.gltf",
+      "format": "glTF",
+      "coverage": "部分支援：核心結構／引用／未壓縮幾何",
+      "statistics": {
+        "declared_vertices": 3,
+        "decoded_positions": 3,
+        "primitives": 1,
+        "triangles_uncompressed": 1,
+        "nodes": 2,
+        "named_nodes": 2,
+        "repeated_name_groups": 0,
+        "root_nodes": 1,
+        "materials": 1,
+        "images": 1
+      }
+    }
+  ],
+  "issues": [
+    {
+      "severity": "ERROR",
+      "rule_id": "REF_MISSING",
+      "file": "sample.mtl",
+      "reference": "missing.png",
+      "evidence": "解析位置：missing.png",
+      "impact": "交付包可能缺素材",
+      "suggestion": "確認並人工補齊，不自動重新連結"
+    },
+    {
+      "severity": "NOT_CHECKED",
+      "rule_id": "OBJ_SCOPE",
+      "file": "model.obj",
+      "reference": "",
+      "evidence": "未驗證UV品質、曲面、退化／非流形拓樸、像素與渲染；OBJ單位／正面未定義",
+      "impact": "非完整幾何品質保證",
+      "suggestion": "依交付政策以原軟體確認；不可猜單位"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "REF_MISSING",
+      "file": "sample.mtl",
+      "reference": "missing.png",
+      "evidence": "解析位置：missing.png",
+      "impact": "交付包可能缺素材",
+      "suggestion": "確認並人工補齊，不自動重新連結"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "REF_MISSING",
+      "file": "缺素材.glb",
+      "reference": "missing.png",
+      "evidence": "解析位置：missing.png",
+      "impact": "交付包可能缺素材",
+      "suggestion": "確認並人工補齊，不自動重新連結"
+    },
+    {
+      "severity": "NOT_CHECKED",
+      "rule_id": "IMAGE_PIXELS",
+      "file": "缺素材.glb",
+      "reference": "",
+      "evidence": "已查來源與檔頭，未解碼像素／色彩設定",
+      "impact": "未完全驗證",
+      "suggestion": "確認匯出內容與對應格式規格"
+    },
+    {
+      "severity": "INFO",
+      "rule_id": "GLTF_UNITS",
+      "file": "缺素材.glb",
+      "reference": "",
+      "evidence": "glTF 2.0 公尺、右手座標、+Y向上；不推測資產實際正面",
+      "impact": "未完全驗證",
+      "suggestion": "確認匯出內容與對應格式規格"
+    },
+    {
+      "severity": "NOT_CHECKED",
+      "rule_id": "GLTF_SCOPE",
+      "file": "缺素材.glb",
+      "reference": "",
+      "evidence": "非完整 Khronos Validator；動畫、skin語意、變換、渲染結果未驗證；空節點與重複名稱不判壞檔",
+      "impact": "未完全驗證",
+      "suggestion": "確認匯出內容與對應格式規格"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "REF_MISSING",
+      "file": "缺素材.gltf",
+      "reference": "不存在.png",
+      "evidence": "解析位置：不存在.png",
+      "impact": "交付包可能缺素材",
+      "suggestion": "確認並人工補齊，不自動重新連結"
+    },
+    {
+      "severity": "NOT_CHECKED",
+      "rule_id": "IMAGE_PIXELS",
+      "file": "缺素材.gltf",
+      "reference": "",
+      "evidence": "已查來源與檔頭，未解碼像素／色彩設定",
+      "impact": "未完全驗證",
+      "suggestion": "確認匯出內容與對應格式規格"
+    },
+    {
+      "severity": "INFO",
+      "rule_id": "GLTF_UNITS",
+      "file": "缺素材.gltf",
+      "reference": "",
+      "evidence": "glTF 2.0 公尺、右手座標、+Y向上；不推測資產實際正面",
+      "impact": "未完全驗證",
+      "suggestion": "確認匯出內容與對應格式規格"
+    },
+    {
+      "severity": "NOT_CHECKED",
+      "rule_id": "GLTF_SCOPE",
+      "file": "缺素材.gltf",
+      "reference": "",
+      "evidence": "非完整 Khronos Validator；動畫、skin語意、變換、渲染結果未驗證；空節點與重複名稱不判壞檔",
+      "impact": "未完全驗證",
+      "suggestion": "確認匯出內容與對應格式規格"
+    }
+  ],
+  "not_checked": [
+    {
+      "severity": "NOT_CHECKED",
+      "rule_id": "OBJ_SCOPE",
+      "file": "model.obj",
+      "reference": "",
+      "evidence": "未驗證UV品質、曲面、退化／非流形拓樸、像素與渲染；OBJ單位／正面未定義",
+      "impact": "非完整幾何品質保證",
+      "suggestion": "依交付政策以原軟體確認；不可猜單位"
+    },
+    {
+      "severity": "NOT_CHECKED",
+      "rule_id": "IMAGE_PIXELS",
+      "file": "缺素材.glb",
+      "reference": "",
+      "evidence": "已查來源與檔頭，未解碼像素／色彩設定",
+      "impact": "未完全驗證",
+      "suggestion": "確認匯出內容與對應格式規格"
+    },
+    {
+      "severity": "NOT_CHECKED",
+      "rule_id": "GLTF_SCOPE",
+      "file": "缺素材.glb",
+      "reference": "",
+      "evidence": "非完整 Khronos Validator；動畫、skin語意、變換、渲染結果未驗證；空節點與重複名稱不判壞檔",
+      "impact": "未完全驗證",
+      "suggestion": "確認匯出內容與對應格式規格"
+    },
+    {
+      "severity": "NOT_CHECKED",
+      "rule_id": "IMAGE_PIXELS",
+      "file": "缺素材.gltf",
+      "reference": "",
+      "evidence": "已查來源與檔頭，未解碼像素／色彩設定",
+      "impact": "未完全驗證",
+      "suggestion": "確認匯出內容與對應格式規格"
+    },
+    {
+      "severity": "NOT_CHECKED",
+      "rule_id": "GLTF_SCOPE",
+      "file": "缺素材.gltf",
+      "reference": "",
+      "evidence": "非完整 Khronos Validator；動畫、skin語意、變換、渲染結果未驗證；空節點與重複名稱不判壞檔",
+      "impact": "未完全驗證",
+      "suggestion": "確認匯出內容與對應格式規格"
+    }
+  ],
+  "recommendations": [
+    "依 ERROR／WARNING 逐項確認，NOT_CHECKED 需另行驗證。",
+    "同名素材僅候選，不自動重新連結。",
+    "字型可用性與授權須由交付雙方確認；本機缺字型不等於收件方缺字型。"
+  ],
+  "integrity": [
+    {
+      "file": "model.obj",
+      "sha256_before": "c5d27918958301bc9ba12db9ddb9e0deba1eca7f138153ee94dcfd3bf3ac33e2",
+      "unchanged": true
+    },
+    {
+      "file": "sample.mtl",
+      "sha256_before": "c6871df949e87d0ec3f7e7d7c9bb5de4bc4646a9e9a44c6dbf89af4cd6ee9549",
+      "unchanged": true
+    },
+    {
+      "file": "缺素材.glb",
+      "sha256_before": "9b66140b3c5bc16c31d11f4a7a7bc0b9ad20aaa12b9fb352dc88d7699884ea7c",
+      "unchanged": true
+    },
+    {
+      "file": "缺素材.gltf",
+      "sha256_before": "a1e669560421636d9f5a65247dd38d60912ea09d6da751e63fe3a5ca77b1eeac",
+      "unchanged": true
+    },
+    {
+      "file": "triangle.bin",
+      "sha256_before": "da6a558d6b6af65846b717b81d06857d17a419ab4ba29b78e34dd7326cf0f1d6",
+      "unchanged": true
+    }
+  ]
+}

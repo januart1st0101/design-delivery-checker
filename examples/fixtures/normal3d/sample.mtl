@@ -1,0 +1,3 @@
+newmtl matte
+Kd 1 1 1
+map_Kd -s 1 1 1 "貼圖.png"
